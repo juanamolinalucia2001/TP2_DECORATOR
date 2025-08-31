@@ -9,14 +9,26 @@ class Beverage(ABC):
     La clase base para todas las bebidas. Utiliza el módulo abc para
     definir que es una clase abstracta.
     """
+    TALL = "Tall"
+    GRANDE = "Grande"
+    VENTI = "Venti"
+
     def __init__(self):
         self.description = "Bebida Desconocida"
+        self._size = Beverage.TALL 
 
     def get_description(self) -> str:
         """
         Devuelve la descripción de la bebida.
         """
         return self.description
+    
+    def set_size(self, size: str):
+        self._size = size
+
+    def get_size(self) -> str:
+        return self._size
+
 
     @abstractmethod
     def cost(self) -> float:
@@ -32,6 +44,7 @@ class HouseBlend(Beverage):
     Café de la casa, un tipo específico de bebida.
     """
     def __init__(self):
+        super().__init__() 
         self.description = "Café de la Casa"
 
     def cost(self) -> float:
@@ -42,6 +55,7 @@ class DarkRoast(Beverage):
     Café Dark Roast, un tipo específico de bebida.
     """
     def __init__(self):
+        super().__init__() 
         self.description = "Café Dark Roast"
 
     def cost(self) -> float:
@@ -52,6 +66,7 @@ class Decaf(Beverage):
     Café Descafeinado, un tipo específico de bebida.
     """
     def __init__(self):
+        super().__init__() 
         self.description = "Café Descafeinado"
 
     def cost(self) -> float:
@@ -62,6 +77,7 @@ class Espresso(Beverage):
     Café Espresso, un tipo específico de bebida.
     """
     def __init__(self):
+        super().__init__() 
         self.description = "Espresso"
 
     def cost(self) -> float:

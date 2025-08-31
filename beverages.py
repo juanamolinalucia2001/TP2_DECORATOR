@@ -9,14 +9,26 @@ class Beverage(ABC):
     La clase base para todas las bebidas. Utiliza el módulo abc para
     definir que es una clase abstracta.
     """
+    TALL = "Tall"
+    GRANDE = "Grande"
+    VENTI = "Venti"
+
     def __init__(self):
         self.description = "Bebida Desconocida"
+        self._size = Beverage.TALL 
 
     def get_description(self) -> str:
         """
         Devuelve la descripción de la bebida.
         """
         return self.description
+    
+    def set_size(self, size: str):
+        self._size = size
+
+    def get_size(self) -> str:
+        return self._size
+
 
     @abstractmethod
     def cost(self) -> float:

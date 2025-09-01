@@ -13,7 +13,7 @@ class Beverage(ABC):
     
     def __init__(self):
         self.description = "Bebida Desconocida"
-        self._size = Beverage.TALL 
+        self._size: Size = Size.TALL
 
     def get_description(self) -> str:
         """
@@ -21,7 +21,7 @@ class Beverage(ABC):
         """
         return self.description
     
-    def set_size(self, size: Size):
+    def set_size(self, size: Size) -> None:
         self._size = size
 
     def get_size(self) -> Size:

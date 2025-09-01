@@ -2,6 +2,7 @@
 # Contiene el Componente y los Componentes Concretos del patrón.
 
 from abc import ABC, abstractmethod
+from size import Size
 
 # --- Componente Abstracto ---
 class Beverage(ABC):
@@ -9,10 +10,7 @@ class Beverage(ABC):
     La clase base para todas las bebidas. Utiliza el módulo abc para
     definir que es una clase abstracta.
     """
-    TALL = "Tall"
-    GRANDE = "Grande"
-    VENTI = "Venti"
-
+    
     def __init__(self):
         self.description = "Bebida Desconocida"
         self._size = Beverage.TALL 
@@ -23,10 +21,10 @@ class Beverage(ABC):
         """
         return self.description
     
-    def set_size(self, size: str):
+    def set_size(self, size: Size):
         self._size = size
 
-    def get_size(self) -> str:
+    def get_size(self) -> Size:
         return self._size
 
 

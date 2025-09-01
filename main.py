@@ -1,70 +1,51 @@
-from beverages import Espresso, DarkRoast, HouseBlend, Decaf, Beverage
-from condiments import Mocha, Whip, Soy, Caramel
-from builder import build_beverage
+from beverages import Espresso, DarkRoast, HouseBlend, Decaf
+from condiments import Mocha, Whip, Soy, Caramel, Milk
+from size import Size
 
 def main():
     print("Bienvenido a Mensita UNSAM Coffee!")
     print("--- Preparando pedidos ---")
 
     # Pedido 1: Espresso simple
-    beverage1 = Espresso()
-    print(f"Pedido 1: {beverage1.get_description()} (${beverage1.cost():.2f})")
+    b1 = Espresso()
+    print(f"Pedido 1: {b1.get_description()} (${b1.cost():.2f})")
 
     # Pedido 2: DarkRoast + doble Mocha + Crema
-    beverage2 = DarkRoast()
-    beverage2 = Mocha(beverage2)
-    beverage2 = Mocha(beverage2)
-    beverage2 = Whip(beverage2)
-    print(f"Pedido 2: {beverage2.get_description()} (${beverage2.cost():.2f})")
+    b2 = Whip(Mocha(Mocha(DarkRoast())))
+    print(f"Pedido 2: {b2.get_description()} (${b2.cost():.2f})")
 
     # Pedido 3: HouseBlend + Soy + Mocha + Whip
-    beverage3 = HouseBlend()
-    beverage3 = Soy(beverage3)
-    beverage3 = Mocha(beverage3)
-    beverage3 = Whip(beverage3)
-    print(f"Pedido 3: {beverage3.get_description()} (${beverage3.cost():.2f})")
+    b3 = Whip(Mocha(Soy(HouseBlend())))
+    print(f"Pedido 3: {b3.get_description()} (${b3.cost():.2f})")
 
     # Pedido 4: Espresso + Caramel
-    beverage4 = Espresso()
-    beverage4 = Caramel(beverage4)
-    print(f"Pedido 4: {beverage4.get_description()} (${beverage4.cost():.2f})")
+    b4 = Caramel(Espresso())
+    print(f"Pedido 4: {b4.get_description()} (${b4.cost():.2f})")
 
     # Pedido 5: HouseBlend + doble Caramel
-    beverage5 = HouseBlend()
-    beverage5 = Caramel(beverage5)
-    beverage5 = Caramel(beverage5)
-    print(f"Pedido 5: {beverage5.get_description()} (${beverage5.cost():.2f})")
+    b5 = Caramel(Caramel(HouseBlend()))
+    print(f"Pedido 5: {b5.get_description()} (${b5.cost():.2f})")
 
-    # Pedido 6: Decaf + Soy + Whip + Caramel
-    beverage6 = Decaf()
-    beverage6 = Soy(beverage6)
-    beverage6 = Whip(beverage6)
-    beverage6 = Caramel(beverage6)
-    print(f"Pedido 6: {beverage6.get_description()} (${beverage6.cost():.2f})")
+    # Pedido 6: Decaf + Soy + Whip + Caramel (cambiando size en la cadena decorada)
+    b6 = Caramel(Whip(Soy(Decaf())))
+    b6.set_size(Size.GRANDE)   # <- Propaga hacia adentro (arreglo aplicado)
+    print(f"Pedido 6: {b6.get_description()} ({b6.get_size().label}) ${b6.cost():.2f}")
 
     # Pedidos con tamaños
     # Pedido A: HouseBlend Venti + Soy
-    beverageA = HouseBlend()
-    beverageA.set_size(Beverage.VENTI)
-    beverageA = Soy(beverageA)
-    print(f"Pedido VENTI: {beverageA.get_description()} ({beverageA.get_size()}) ${beverageA.cost():.2f}")
+    bA = Soy(HouseBlend())
+    bA.set_size(Size.VENTI)
+    print(f"Pedido VENTI: {bA.get_description()} ({bA.get_size().label}) ${bA.cost():.2f}")
 
     # Pedido B: Espresso Grande + Caramel
-    beverageB = Espresso()
-    beverageB.set_size(Beverage.GRANDE)
-    beverageB = Caramel(beverageB)
-    print(f"Pedido GRANDE: {beverageB.get_description()} ({beverageB.get_size()}) ${beverageB.cost():.2f}")
+    bB = Caramel(Espresso())
+    bB.set_size(Size.GRANDE)
+    print(f"Pedido GRANDE: {bB.get_description()} ({bB.get_size().label}) ${bB.cost():.2f}")
 
     # Pedido C: DarkRoast Tall + Soy + Whip
-    beverageC = DarkRoast()
-    beverageC.set_size(Beverage.TALL)
-    beverageC = Soy(beverageC)
-    beverageC = Whip(beverageC)
-    print(f"Pedido TALL: {beverageC.get_description()} ({beverageC.get_size()}) ${beverageC.cost():.2f}")
-
-     # Pedido C bis: DarkRoast Tall + Soy + Whip
-    beverageCBis = build_beverage("DarkRoast", "Tall", ["Soy", "Whip"])
-    print(f"Pedido TALL bis: {beverageCBis.get_description()} ({beverageCBis.get_size()}) ${beverageCBis.cost():.2f}")
+    bC = Whip(Soy(DarkRoast()))
+    bC.set_size(Size.TALL)
+    print(f"Pedido TALL: {bC.get_description()} ({bC.get_size().label}) ${bC.cost():.2f}")
 
 if __name__ == "__main__":
     main()

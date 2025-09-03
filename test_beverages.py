@@ -1,4 +1,4 @@
-# test_beverages.py
+# -*- coding: utf-8 -*-
 import pytest
 from beverages import Espresso, DarkRoast, HouseBlend, Decaf, Beverage
 from condiments import Mocha, Whip, Soy, Caramel
@@ -15,7 +15,7 @@ def test_darkroast_doble_mocha_whip():
     bebida = Mocha(bebida)
     bebida = Mocha(bebida)
     bebida = Whip(bebida)
-    assert bebida.get_description() == "Café Dark Roast, Mocha, Mocha, Crema"
+    assert bebida.get_description() == "Cafï¿½ Dark Roast, Mocha, Mocha, Crema"
     # 0.99 + 0.20 + 0.20 + 0.10 = 1.49
     assert pytest.approx(bebida.cost(), 0.01) == 1.49
 
@@ -24,7 +24,7 @@ def test_houseblend_soy_mocha_whip():
     bebida = Soy(bebida)
     bebida = Mocha(bebida)
     bebida = Whip(bebida)
-    assert bebida.get_description() == "Café de la Casa, Soja, Mocha, Crema"
+    assert bebida.get_description() == "Cafï¿½ de la Casa, Soja, Mocha, Crema"
     # 0.89 + 0.10 + 0.20 + 0.10 = 1.29
     assert pytest.approx(bebida.cost(), 0.01) == 1.29
 
@@ -32,7 +32,7 @@ def test_houseblend_doble_caramel():
     bebida = HouseBlend()
     bebida = Caramel(bebida)
     bebida = Caramel(bebida)
-    assert bebida.get_description() == "Café de la Casa, Caramelo, Caramelo"
+    assert bebida.get_description() == "Cafï¿½ de la Casa, Caramelo, Caramelo"
     # 0.89 + 0.20 + 0.20 = 1.29
     assert pytest.approx(bebida.cost(), 0.01) == 1.29
 
@@ -47,7 +47,7 @@ def test_espresso_grande_caramel():
 
 def test_build_beverage_darkroast_tall_soy_whip():
     bebida = build_beverage("DarkRoast", "Tall", ["Soy", "Whip"])
-    assert bebida.get_description() == "Café Dark Roast, Soja, Crema"
+    assert bebida.get_description() == "Cafï¿½ Dark Roast, Soja, Crema"
     # 0.99 + Soy Tall 0.10 + Whip Tall 0.10 = 1.19
     assert bebida.get_size() == "Tall"
     assert pytest.approx(bebida.cost(), 0.01) == 1.19

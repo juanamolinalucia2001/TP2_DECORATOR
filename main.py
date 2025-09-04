@@ -1,5 +1,6 @@
 from beverages import Espresso, DarkRoast, HouseBlend, Decaf
 from condiments import Mocha, Whip, Soy, Caramel, Milk
+from pretty_print import PrettyPrint
 from size import Size
 from builder import build_beverage
 
@@ -48,8 +49,17 @@ def main():
     bC.set_size(Size.TALL)
     print(f"Pedido TALL: {bC.get_description()} ({bC.get_size().label}) ${bC.cost():.2f}")
 
+
     # Pedido D: DarkRoast Venti + Soy + Whip 
-    bD = build_beverage("DarkRoast", Size.Venti,condiments=["Soy", "Whip"])
-    print(f"Pedido TALL: {bD.get_description()} ({bD.get_size().label}) ${bD.cost():.2f}")
+    bD = build_beverage("DarkRoast", Size.VENTI,condiments=["Soy", "Whip"])
+    print(f"Pedido VENTI: {bD.get_description()} ({bD.get_size().label}) ${bD.cost():.2f}")
+    
+    #Comparacion con prettyprint
+    # Pedido E: DarkRoast TALL + doble Mocha + triple Crema
+    bE = build_beverage("DarkRoast", Size.TALL,condiments=["Mocha", "Mocha","Whip", "Whip", "Whip"])
+    print(f"Pedido sin prettyprint: {bE.get_description()} ({bE.get_size().label}) ${bE.cost():.2f}")
+    pretty_bE = PrettyPrint(bE)
+    print(f"Pedido con prettyprint: {pretty_bE.get_description()} ({pretty_bE.get_size().label}) ${pretty_bE.cost():.2f}")
+
 if __name__ == "__main__":
     main()

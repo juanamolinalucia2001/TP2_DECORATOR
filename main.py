@@ -1,6 +1,7 @@
 from beverages import Espresso, DarkRoast, HouseBlend, Decaf
 from condiments import Mocha, Whip, Soy, Caramel, Milk
 from size import Size
+from builder import build_beverage
 
 def main():
     print("Bienvenido a Mensita UNSAM Coffee!")
@@ -8,7 +9,7 @@ def main():
 
     # Pedido 1: Espresso simple
     b1 = Espresso()
-    print(f"Pedido 1: {b1.get_description()} (${b1.cost():.2f})")
+    print(f"Pedido 1: {b1.get_description()} (${b1.cost():.2f}) tamaño {b1.get_size().label}")
 
     # Pedido 2: DarkRoast + doble Mocha + Crema
     b2 = Whip(Mocha(Mocha(DarkRoast())))
@@ -47,5 +48,8 @@ def main():
     bC.set_size(Size.TALL)
     print(f"Pedido TALL: {bC.get_description()} ({bC.get_size().label}) ${bC.cost():.2f}")
 
+    # Pedido D: DarkRoast Venti + Soy + Whip 
+    bD = build_beverage("DarkRoast", Size.Venti,condiments=["Soy", "Whip"])
+    print(f"Pedido TALL: {bD.get_description()} ({bD.get_size().label}) ${bD.cost():.2f}")
 if __name__ == "__main__":
     main()

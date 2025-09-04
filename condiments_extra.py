@@ -1,4 +1,5 @@
-from beverages import CondimentDecorator, Beverage
+from beverages import  Beverage
+from condiments import CondimentDecorator
 
 class Topping(CondimentDecorator):
     """

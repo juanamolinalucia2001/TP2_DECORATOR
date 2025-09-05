@@ -87,8 +87,8 @@ CondimentDecorator (abstract)  <-- hereda de Beverage
    |           |            |       |        |        
 Mocha      Whip         Soy    Caramel    Milk      Topping (abstract)
                                                  |
-                            |-----------------------------------------------
-                            |            |               |                |
-                          Honey        Cacao         Cinnamon         Vanilla
+                                                 |-----------------------------------------------
+                                                 |            |               |                |
+                                               Honey        Cacao         Cinnamon         Vanilla
 
 

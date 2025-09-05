@@ -12,10 +12,11 @@
 
 
 ### **Size**
+<p align="justify">
 La clase **`Size`** implementa un **Enum** para definir cada tamaño con un *label* y un factor de precio.  
 Esta decisión se tomó para **centralizar la lógica de tamaños y factores de costo en un único lugar**.  
 De esta manera, añadir un nuevo tamaño o cambiar un precio implica modificar solo esta clase, **reduciendo el acoplamiento y mejorando la extensibilidad** del sistema.   
-
+</p>
 ---
 
 ### **Decisiones de diseño de los tests**
